@@ -21,6 +21,11 @@
         padding: 20px;
     }
 
+    main {
+        margin: auto;
+        max-width: 60rem;
+    }
+
     /* Header */
     header {
         text-align: center;
@@ -38,10 +43,11 @@
     }
 
     .menu {
-        background: white;
-        border-radius: 12px;
+        background: #fff;
+        border-radius: 15px;
         padding: 20px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        border: 1px solid #b5b5b5;
     }
 
     .menu h3 {
@@ -58,13 +64,15 @@
 
     button {
         background: #0078ff;
-        color: white;
+        color: #fff;
         border: none;
         border-radius: 8px;
         padding: 10px;
         font-size: 1rem;
         cursor: pointer;
         transition: all 0.2s ease;
+        transition: transform 1200ms cubic-bezier(1, 0, 0, 1), 
+              opacity 1000ms ease;
     }
 
     button:hover {
@@ -72,18 +80,31 @@
         transform: scale(1.05);
     }
 
+    button:active {
+        transform: scale(10);
+        opacity: 0;
+    }
+
+    button:focus {
+        background-color: #0d7004;
+    }
+
     .output-section {
         margin-top: 25px;
-        padding: 15px;
-        background: white;
-        border-radius: 12px;
+        padding: 20px;
+        background: #444444;
+        color: #fff;
+        border-radius: 15px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         min-height: 50px;
+        border: 2px solid #111111;
     }
 
     #output {
         background-color: #1b1b1b;
         color: #fff;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1rem;
         padding: 5rem;
         border-radius: 10px;
         margin-top: 1rem;
@@ -96,6 +117,8 @@
   <header>
     <h1>UD 1 - Boletín 1</h1>
     <h2>Raimundo Palma Méndez</h2>
+    <br>
+    <hr>
   </header>
 
   <main>
@@ -106,7 +129,15 @@
     </div>
 
     <section class="output-section">
-        <h3>Ejecución</h3>
+        <div style="display: flex; justify-content: space-between;">
+            <h3>Ejecución</h3>
+            
+            <div style="display: flex; gap: 10px;">
+                <div style="width: 20px; height: 20px; border-radius: 100px; background-color: #d84c4c; border: 1px solid #742828;"></div>
+                <div style="width: 20px; height: 20px; border-radius: 100px; background-color: #e6e214; border: 1px solid #6c7428;"></div>
+                <div style="width: 20px; height: 20px; border-radius: 100px; background-color: #45c450; border: 1px solid #28742e;"></div>
+            </div>
+        </div>
         <div id="output">
 
         </div>

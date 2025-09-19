@@ -50,5 +50,8 @@ function ejercicio12() {
     output.innerHTML += `Producto: ${producto}<br>`;
     output.innerHTML += `División: ${division}`;
   }
+
+
 }
+
 
