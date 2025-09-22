@@ -32,7 +32,7 @@ function ejecutarEjercicio(num) {
 */
 
 function ejercicio1() {
-  let edad = parseInt(prompt("Introduzca su edad: "));
+  let edad = parseInt(prompt("Introduzca su edad: ")); //al pasar un string a int, si no se introdujo ningun valor, se convertirá en "NaN"
   let nombre = prompt("Introduzca su nombre: ");
   let estadoCivil = prompt("Introduzca su estado civil (solter@, casad@, viud@, divorciad@): ");
 
@@ -50,7 +50,7 @@ function ejercicio1() {
 }
 
 function ejercicio12() {
-  let a = parseFloat(prompt("Introduce el primer número:"));
+  let a = parseFloat(prompt("Introduce el primer número:")); 
   let b = parseFloat(prompt("Introduce el segundo número:"));
 
   if (isNaN(a) || isNaN(b)) {
