@@ -48,6 +48,7 @@
         padding: 20px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         border: 1px solid #b5b5b5;
+        margin-bottom: 2rem;
     }
 
     .menu h3 {
@@ -86,11 +87,23 @@
     }
 
     button:focus {
-        background-color: #0d7004;
+        background-color: #002c5f;
+    }
+
+    .form-section {
+        background: #fff;
+        border-radius: 15px;
+        padding: 20px;
+        margin-top: 2rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        border: 1px solid #b5b5b5;
+        opacity: 0;
+        transform: translateY(-20px); /* opcional: efecto de desplazamiento */
+        transition: opacity 1s ease, transform 1s ease; /* propiedades animadas */
     }
 
     .output-section {
-        margin-top: 25px;
+        margin-top: 2rem;
         padding: 20px;
         background: #444444;
         color: #fff;
@@ -128,6 +141,11 @@
       <div id="buttons-container"></div>
     </div>
 
+    <section class="form-section" id="form-container" style="display: none;">
+        
+    </section>
+
+
     <section class="output-section">
         <div style="display: flex; justify-content: space-between;">
             <h3>Ejecución</h3>
@@ -142,6 +160,11 @@
 
         </div>
     </section>
+
+
+    <div style="text-align: center;">
+        <button id="clear-form-btn" style="margin: 2rem 0; background-color: red; text-align: center; font-size: 2rem;">Limpiar todo</button>
+    </div>
   </main>
 
   <script src="main.js"></script>
