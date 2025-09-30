@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 1</title>
+</head>
+<body>
+  <h2>Ejercicio 1</h2>
+  <script>
+    /*
+    Crear un programa que solicite al usuario nombre y apellidos y devuelva:
+    El tamaño del nombre más los apellidos sin contar los espacios.
+    La cadena completa en minúsculas y mayúsculas.
+    La división del nombre, apellido1 y apellido2 en tres líneas distintas.
+    Una propuesta de nombre usuario de la siguiente forma: inicial del nombre, primeras tres letras del apellido1 y primeras tres letras del apellido2. Ejemplo: Juan Martín López  → jmarlop
+    */
+    let nombre = prompt("Introduce tu nombre:");
+    let apellido1 = prompt("Introduce tu primer apellido:");
+    let apellido2 = prompt("Introduce tu segundo apellido:");
+    
+    let completo = nombre + apellido1 + apellido2;
+    
+    document.write("Tamaño sin espacios: " + completo.length + "<br>");
+    document.write("En minúsculas: " + (nombre + " " + apellido1 + " " + apellido2).toLowerCase() + "<br>");
+    document.write("En mayúsculas: " + (nombre + " " + apellido1 + " " + apellido2).toUpperCase() + "<br>");
+    document.write("Nombre y apellidos:<br>" + nombre + "<br>" + apellido1 + "<br>" + apellido2 + "<br>");
+    
+    let usuario = nombre.charAt(0).toLowerCase() + apellido1.substring(0,3).toLowerCase() + apellido2.substring(0,3).toLowerCase();
+    document.write("Usuario sugerido: " + usuario);
+  </script>
+</body>
+</html>

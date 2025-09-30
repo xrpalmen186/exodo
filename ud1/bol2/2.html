@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 2</title>
+</head>
+<body>
+  <h2>Ejercicio 2</h2>
+  <script>
+    /*
+    Crear un programa que solicite al usuario una propuesta de contraseña y compruebe si cumple con los siguientes requisitos:
+    Tiene entre 8 y 16 caracteres.
+    Tiene, al menos, una letra mayúscula.
+    Tiene, al menos, una letra minúscula.
+    Tiene, al menos, un dígito.
+    Tiene, al menos, uno de los siguientes caracteres especiales: guión alto, guión bajo, arroba, almohadilla, dólar, tanto por ciento o ampersand.
+    */
+    let password = prompt("Introduce una contraseña:");
+    let valido = true;
+    
+    if(password.length < 8 || password.length > 16) valido = false;
+    if(!/[A-Z]/.test(password)) valido = false;
+    if(!/[a-z]/.test(password)) valido = false;
+    if(!/[0-9]/.test(password)) valido = false;
+    if(!/[-_@#\$%&]/.test(password)) valido = false;
+    
+    document.write("Contraseña: " + (valido ? "Válida ✅" : "Inválida ❌"));
+  </script>
+</body>
+</html>

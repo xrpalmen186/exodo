@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 7</title>
+</head>
+<body>
+  <h2>Ejercicio 7</h2>
+  <script>
+    /*
+    Realiza un programa que reciba una cadena con el siguiente formato: “nombre:apellidos:telefono:email:codigopostal”. Tras recibir la cadena, debe desglosar y mostrar la siguiente información:
+    
+    Código postal.
+    Apellidos.
+    Email.
+    Suponiendo un formato de email “direccion@servidor” debe mostrar el nombre del servidor asociado.
+    */
+    let cadena = prompt("Introduce la cadena (nombre:apellidos:telefono:email:codigopostal):");
+    let partes = cadena.split(":");
+    
+    document.write("Código postal: " + partes[4] + "<br>");
+    document.write("Email: " + partes[3] + "<br>");
+    document.write("Teléfono: " + partes[2] + "<br>");
+    document.write("Apellidos: " + partes[1] + "<br>");
+    document.write("Nombre: " + partes[0] + "<br>");
+    
+    let emailPartes = partes[3].split("@");
+    document.write("Servidor de email: " + emailPartes[1]);
+  </script>
+</body>
+</html>

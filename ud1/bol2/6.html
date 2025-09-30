@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 6</title>
+</head>
+<body>
+  <h2>Ejercicio 6</h2>
+  <script>
+    /*Crear un script que convierte las palabras mayúsculas de una frase en minúsculas y viceversa.*/
+    let frase = prompt("Introduce una frase:");
+    let resultado = "";
+    for(let letra of frase){
+      if(letra === letra.toUpperCase()){
+        resultado += letra.toLowerCase();
+      } else {
+        resultado += letra.toUpperCase();
+      }
+    }
+    document.write(resultado);
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 4</title>
+</head>
+<body>
+  <h2>Ejercicio 4</h2>
+  <script>
+    /*
+    Crear un script que ponga en negrita las letras mayúsculas que hay en una frase.
+    */
+    let frase = prompt("Introduce una frase:");
+    let resultado = frase.replace(/[A-ZÁÉÍÓÚÜÑ]/g, letra => "<b>" + letra + "</b>");
+    document.write(resultado);
+  </script>
+</body>
+</html>
