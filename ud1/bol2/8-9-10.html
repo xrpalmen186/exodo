@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicios 8, 9 y 10</title>
+  <style>
+    
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+
+    section {
+        margin-bottom: 40px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 6px 12px;
+        cursor: pointer;
+    }
+    
+  </style>
+</head>
+<body>
+  <h1>Ejercicios de JavaScript</h1>
+
+  <!-- Ejercicio 8 -->
+  <section>
+    <h2>Ejercicio 8</h2>
+    <p>
+      Crear un script que muestre mediante un mensaje:
+      <br>- La fecha actual (día, mes en letra y año) <br>
+      - La hora actual (hora y minutos) <br>
+      - El día de la semana (en letra) <br>
+      - O los tres anteriores a la vez (según elija el usuario).
+    </p>
+    <button onclick="ejercicio8()">Mostrar información</button>
+  </section>
+
+  <!-- Ejercicio 9 -->
+  <section>
+    <h2>Ejercicio 9</h2>
+    <p>Crear un script que reciba dos fechas y diga cuál es anterior y el tiempo transcurrido entre ellas (en años, meses y días).</p>
+    <button onclick="ejercicio9()">Comparar Fechas</button>
+  </section>
+
+  <!-- Ejercicio 10 -->
+  <section>
+    <h2>Ejercicio 10</h2>
+    <p>Programa que pregunte nuestro nombre y fecha de nacimiento, y muestre los días vividos hasta el momento.</p>
+    <button onclick="ejercicio10()">Calcular días vividos</button>
+  </section>
+
+  <script>
+    // =========================
+    // EJERCICIO 8
+    // =========================
+    function ejercicio8() {
+      const hoy = new Date();
+
+      const diasSemana = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+      const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", 
+                     "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+
+      const fecha = `Fecha: ${hoy.getDate()} de ${meses[hoy.getMonth()]} de ${hoy.getFullYear()}`;
+      const hora = `Hora: ${hoy.getHours().toString().padStart(2,"0")}:${hoy.getMinutes().toString().padStart(2,"0")}`;
+      const diaSemana = `Día de la semana: ${diasSemana[hoy.getDay()]}`;
+
+      let opcion = prompt("¿Qué deseas mostrar?\n1. Fecha\n2. Hora\n3. Día de la semana\n4. Todo junto");
+
+      switch(opcion) {
+        case "1": alert(fecha); break;
+        case "2": alert(hora); break;
+        case "3": alert(diaSemana); break;
+        case "4": alert(`${fecha}\n${hora}\n${diaSemana}`); break;
+        default: alert("Opción no válida");
+      }
+    }
+
+    // =========================
+    // EJERCICIO 9
+    // =========================
+    function ejercicio9() {
+      let fecha1 = prompt("Introduce la primera fecha (formato YYYY-MM-DD):");
+      let fecha2 = prompt("Introduce la segunda fecha (formato YYYY-MM-DD):");
+
+      if (!fecha1 || !fecha2) {
+        alert("Debes introducir ambas fechas.");
+        return;
+      }
+
+      let f1 = new Date(fecha1);
+      let f2 = new Date(fecha2);
+
+      if (isNaN(f1) || isNaN(f2)) {
+        alert("Formato de fecha no válido.");
+        return;
+      }
+
+      let anterior = f1 < f2 ? f1 : f2;
+      let posterior = f1 < f2 ? f2 : f1;
+
+      let diffAnios = posterior.getFullYear() - anterior.getFullYear();
+      let diffMeses = posterior.getMonth() - anterior.getMonth();
+      let diffDias = posterior.getDate() - anterior.getDate();
+
+      if (diffDias < 0) {
+        diffMeses--;
+        let ultimoDiaMes = new Date(posterior.getFullYear(), posterior.getMonth(), 0).getDate();
+        diffDias += ultimoDiaMes;
+      }
+      if (diffMeses < 0) {
+        diffAnios--;
+        diffMeses += 12;
+      }
+
+      alert(`La fecha anterior es: ${anterior.toLocaleDateString()}\n` +
+            `La más reciente es: ${posterior.toLocaleDateString()}\n` +
+            `Tiempo transcurrido: ${diffAnios} años, ${diffMeses} meses y ${diffDias} días.`);
+    }
+
+    // =========================
+    // EJERCICIO 10
+    // =========================
+    function ejercicio10() {
+      let nombre = prompt("¿Cuál es tu nombre?");
+      let fechaNac = prompt("Introduce tu fecha de nacimiento (formato YYYY-MM-DD):");
+
+      if (!nombre || !fechaNac) {
+        alert("Debes introducir tu nombre y fecha de nacimiento.");
+        return;
+      }
+
+      let nacimiento = new Date(fechaNac);
+      let hoy = new Date();
+
+      if (isNaN(nacimiento)) {
+        alert("Formato de fecha no válido.");
+        return;
+      }
+
+      let diffTiempo = hoy - nacimiento;
+      let diasVividos = Math.floor(diffTiempo / (1000 * 60 * 60 * 24));
+
+      alert(`${nombre}, has vivido aproximadamente ${diasVividos} días.`);
+    }
+  </script>
+</body>
+</html>
