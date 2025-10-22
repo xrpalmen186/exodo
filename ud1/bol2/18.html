@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Primos y Palíndromos</title>
+</head>
+<body>
+  <h2>Números que son a la vez primos y palíndromos (1 - 100000)</h2>
+  <button onclick="calcular()">Calcular</button>
+  <pre id="resultado"></pre>
+
+  <script>
+    // Función para comprobar si un número es primo
+    function esPrimo(n) {
+        if (n < 2) return false;
+        if (n === 2) return true;
+        if (n % 2 === 0) return false;
+        const limite = Math.sqrt(n);
+        for (let i = 3; i <= limite; i += 2) {
+            if (n % i === 0) return false;
+        }
+        return true;
+    }
+
+    // Función para comprobar si un número es palíndromo
+    function esPalindromo(n) {
+        const str = n.toString();
+
+        if (str === str.split('').reverse().join('')) {
+            return true;
+        }
+
+        return false;
+    }
+
+    // Función principal
+    function calcular() {
+        const resultado = document.getElementById("resultado");
+        resultado.textContent = "Calculando, por favor espera...\n";
+      
+        const primosPalindromos = [];
+
+        for (let i = 1; i <= 100000; i++) {
+            if (esPrimo(i) && esPalindromo(i)) {
+                primosPalindromos.push(i);
+            }
+        }
+
+        resultado.textContent = 
+            `Primos y palíndromos encontrados (${primosPalindromos.length}):\n` + 
+            primosPalindromos.join(", \n");
+    }
+  </script>
+</body>
+</html>
