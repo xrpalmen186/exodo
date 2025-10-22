@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form name="frmNumero">
+        <label>Número: </label>
+        <input type="text" name="numero">
+        <br>
+        <input type="button" id="btn" value="ACEPTAR">
+    </form>
+
+    <p id="salida"></p>
+
+    <script>
+        let contador = 1;
+        let sumaTotal = 0;
+        document.getElementById("btn").onclick = function () {
+            let num;
+
+            if (contador <= 5) {
+                num = Number(frmNumero.numero.value);
+                sumaTotal += num;
+
+                document.getElementById("salida").innerHTML = "Numeros introducidos: " + contador + "  -  Suma acumulada: " + sumaTotal;
+
+                contador++;
+            }
+        }        
+    </script>
+
+</body>
+
+</html>
