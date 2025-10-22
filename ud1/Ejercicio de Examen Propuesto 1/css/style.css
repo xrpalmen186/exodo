@@ -1,0 +1,119 @@
+/* ============================
+   ESTILOS BÁSICOS GENERALES
+   ============================ */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fafafa;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+/* CABECERA Y MENÚ */
+header {
+  background-color: #4c6ef5;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8em;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  background-color: #5c7cfa;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+nav ul li a:hover {
+  background-color: #748ffc;
+}
+
+/* FORMULARIOS */
+main {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+form {
+  display: none;
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+form h2 {
+  color: #364fc7;
+  border-bottom: 2px solid #adb5bd;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+
+.radio-group {
+  margin: 5px 0;
+}
+
+button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 0.95em;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.botones {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+button[type="button"]:first-child {
+  background-color: #4c6ef5;
+  color: white;
+}
+
+button[type="button"]:last-child {
+  background-color: #adb5bd;
+  color: #222;
+}

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Mascotas Feliz 🐾</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <!-- ==============================
+       CABECERA Y MENÚ DE NAVEGACIÓN
+       ============================== -->
+        <header>
+            <h1>Mascotas Feliz 🐾</h1>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#" onclick="mostrarFormulario('frmAlta');">Alta
+                            Mascota</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            onclick="mostrarFormulario('frmPeso');">Actualizar
+                            Peso</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            onclick="mostrarFormulario('frmPerros');">Listado
+                            Perros Avanzados</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            onclick="mostrarFormulario('frmGatos');">Listado
+                            Gatos por Color</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="mostrarTotalAdopcion();">Total
+                            Adopción</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- ==============================
+       CONTENEDOR DE FORMULARIOS
+       ============================== -->
+        <main id="formularios">
+            <!-- FORMULARIO: Alta de Mascota -->
+            <form id="frmAlta">
+                <h2>Alta de Mascota</h2>
+
+                <label for="txtCodigo">Código:</label>
+                <input type="number" id="txtCodigo"
+                    placeholder="Código único" />
+
+                <label for="txtNombre">Nombre:</label>
+                <input type="text" id="txtNombre"
+                    placeholder="Nombre de la mascota" />
+
+                <label for="txtPeso">Peso (kg):</label>
+                <input type="number" id="txtPeso" placeholder="Peso actual" />
+
+                <label>Tipo de mascota:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="rbtTipoMascota"
+                            value="perro" checked />
+                        Perro</label>
+                    <label><input type="radio" name="rbtTipoMascota"
+                            value="gato" />
+                        Gato</label>
+                </div>
+
+                <label for="txtEntrenamiento">Nivel de entrenamiento (solo
+                    perros):</label>
+                <select id="txtEntrenamiento">
+                    <option value>Seleccione...</option>
+                    <option value="Básico">Básico</option>
+                    <option value="Medio">Medio</option>
+                    <option value="Avanzado">Avanzado</option>
+                </select>
+
+                <label for="txtColor">Color de pelaje (solo gatos):</label>
+                <input
+                    type="text"
+                    id="txtColor"
+                    placeholder="Ej: blanco, negro, gris..." />
+
+                <div class="botones">
+                    <button type="button" onclick="aceptarAltaMascota();">
+                        Registrar
+                    </button>
+                    <button type="button"
+                        onclick="ocultarTodosLosFormularios();">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+
+            <!-- FORMULARIO: Actualizar Peso -->
+            <form id="frmPeso">
+                <h2>Actualizar Peso</h2>
+
+                <label for="txtCodigoPeso">Código:</label>
+                <input
+                    type="number"
+                    id="txtCodigoPeso"
+                    placeholder="Código de mascota" />
+
+                <label for="txtNuevoPeso">Nuevo Peso (kg):</label>
+                <input type="number" id="txtNuevoPeso"
+                    placeholder="Nuevo peso en kg" />
+
+                <div class="botones">
+                    <button type="button" onclick="aceptarActualizarPeso();">
+                        Actualizar
+                    </button>
+                    <button type="button"
+                        onclick="ocultarTodosLosFormularios();">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+
+            <!-- FORMULARIO: Listado Perros Avanzados -->
+            <form id="frmPerros">
+                <h2>Listado de Perros (Entrenamiento Avanzado)</h2>
+
+                <label for="txtPesoMinimo">Peso mínimo (kg):</label>
+                <input type="number" id="txtPesoMinimo"
+                    placeholder="Peso mínimo" />
+
+                <div class="botones">
+                    <button type="button" onclick="aceptarListadoPerros();">
+                        Mostrar Listado
+                    </button>
+                    <button type="button"
+                        onclick="ocultarTodosLosFormularios();">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+
+            <!-- FORMULARIO: Listado Gatos -->
+            <form id="frmGatos">
+                <h2>Listado de Gatos por Color</h2>
+
+                <label for="txtColorListado">Color:</label>
+                <input
+                    type="text"
+                    id="txtColorListado"
+                    placeholder="Ej: blanco, negro..." />
+
+                <div class="botones">
+                    <button type="button" onclick="aceptarListadoGatos();">
+                        Mostrar Listado
+                    </button>
+                    <button type="button"
+                        onclick="ocultarTodosLosFormularios();">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </main>
+
+        <!-- ==============================
+        ARCHIVOS JAVASCRIPT
+        ============================== -->
+        <script src="js/objetos.js"></script>
+        <script src="js/codigo.js"></script>
+
+        <!-- Control de visibilidad de formularios -->
+        <script>
+        function ocultarTodosLosFormularios() {
+            document
+            .querySelectorAll("main form")
+            .forEach((f) => (f.style.display = "none"));
+        }
+        function mostrarFormulario(id) {
+            ocultarTodosLosFormularios();
+            document.getElementById(id).style.display = "block";
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+        function mostrarTotalAdopcion() {
+            if (typeof oTienda !== "undefined" && oTienda) {
+            alert(
+                "Hay " + oTienda.totalAdopcion() + " mascotas listas para adopción."
+            );
+            } else {
+            alert("El sistema aún no está inicializado.");
+            }
+        }
+        document.addEventListener("DOMContentLoaded", ocultarTodosLosFormularios);
+    </script>
+    </body>
+</html>
