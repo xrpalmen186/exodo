@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectroShop — Gestión de Productos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- ===============================
+       CABECERA Y MENÚ DE NAVEGACIÓN
+       =============================== -->
+    <header>
+        <h1>📺 ElectroShop — Gestión de Productos 💻</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="mostrarFormulario('frmAlta');">Alta de producto</a></li>
+                <li><a href="#" onclick="mostrarFormulario('frmPrecio');">Actualizar precio</a></li>
+                <li><a href="#" onclick="mostrarFormulario('frmListadoTV');">Listado televisores 4K</a></li>
+                <li><a href="#" onclick="mostrarFormulario('frmListadoPortatiles');">Listado portátiles por RAM</a></li>
+                <li><a href="#" onclick="mostrarValorStock();">Valor total del stock</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ===============================
+       CONTENEDOR DE FORMULARIOS
+       =============================== -->
+    <main id="formularios">
+
+        <!-- === FORMULARIO ALTA === -->
+        <form id="frmAlta">
+            <h2>Alta de producto</h2>
+
+            <label for="txtCodigo">Código:</label>
+            <input type="number" id="txtCodigo" placeholder="Ej: 101">
+
+            <label for="txtNombre">Nombre:</label>
+            <input type="text" id="txtNombre" placeholder="Ej: Samsung QLED">
+
+            <label for="txtPrecio">Precio (€):</label>
+            <input type="number" id="txtPrecio" placeholder="Ej: 999">
+
+            <label for="txtStock">Stock:</label>
+            <input type="number" id="txtStock" placeholder="Ej: 10">
+
+            <label>Tipo de producto:</label>
+            <div class="radio-group">
+                <label><input type="radio" name="rbtTipo" value="televisor" checked> Televisor</label>
+                <label><input type="radio" name="rbtTipo" value="portatil"> Portátil</label>
+            </div>
+
+            <!-- Campos específicos -->
+            <div id="camposTelevisor">
+                <label for="txtPulgadas">Pulgadas:</label>
+                <input type="number" id="txtPulgadas" placeholder="Ej: 55">
+
+                <label for="txtResolucion">Resolución:</label>
+                <select id="txtResolucion">
+                    <option value="">Seleccione...</option>
+                    <option value="HD">HD</option>
+                    <option value="Full HD">Full HD</option>
+                    <option value="4K">4K</option>
+                    <option value="8K">8K</option>
+                </select>
+            </div>
+
+            <div id="camposPortatil" style="display: none;">
+                <label for="txtRAM">RAM (GB):</label>
+                <input type="number" id="txtRAM" placeholder="Ej: 16">
+
+                <label for="txtProcesador">Procesador:</label>
+                <input type="text" id="txtProcesador" placeholder="Ej: Intel i7">
+            </div>
+
+            <div class="botones">
+                <button type="button" onclick="aceptarAltaProducto();">Registrar</button>
+                <button type="button" class="cancelar" onclick="ocultarTodosLosFormularios();">Cancelar</button>
+            </div>
+        </form>
+
+        <!-- === FORMULARIO ACTUALIZAR PRECIO === -->
+        <form id="frmPrecio">
+            <h2>Actualizar precio</h2>
+
+            <label for="txtCodigoPrecio">Código del producto:</label>
+            <input type="number" id="txtCodigoPrecio" placeholder="Ej: 101">
+
+            <label for="txtNuevoPrecio">Nuevo precio (€):</label>
+            <input type="number" id="txtNuevoPrecio" placeholder="Ej: 1200">
+
+            <div class="botones">
+                <button type="button" onclick="aceptarActualizarPrecio();">Actualizar</button>
+                <button type="button" class="cancelar" onclick="ocultarTodosLosFormularios();">Cancelar</button>
+            </div>
+        </form>
+
+        <!-- === FORMULARIO LISTADO TELEVISOR === -->
+        <form id="frmListadoTV">
+            <h2>Listado de televisores 4K o superior</h2>
+            <p>Se mostrarán todos los televisores con resolución 4K u 8K.</p>
+
+            <div class="botones">
+                <button type="button" onclick="aceptarListadoTelevisores();">Mostrar listado</button>
+                <button type="button" class="cancelar" onclick="ocultarTodosLosFormularios();">Cancelar</button>
+            </div>
+        </form>
+
+        <!-- === FORMULARIO LISTADO PORTÁTILES === -->
+        <form id="frmListadoPortatiles">
+            <h2>Listado de portátiles por RAM</h2>
+
+            <label for="txtMinRAM">RAM mínima (GB):</label>
+            <input type="number" id="txtMinRAM" placeholder="Ej: 8">
+
+            <div class="botones">
+                <button type="button" onclick="aceptarListadoPortatiles();">Mostrar listado</button>
+                <button type="button" class="cancelar" onclick="ocultarTodosLosFormularios();">Cancelar</button>
+            </div>
+        </form>
+    </main>
+
+    <!-- ===============================
+       ARCHIVOS JAVASCRIPT
+       =============================== -->
+    <script src="js/objetos.js"></script>
+    <script src="js/codigo.js"></script>
+
+    <script>
+        // === Gestión de visibilidad de formularios ===
+        function ocultarTodosLosFormularios() {
+            document.querySelectorAll("main form").forEach(f => f.style.display = "none");
+        }
+
+        function mostrarFormulario(id) {
+            ocultarTodosLosFormularios();
+            document.getElementById(id).style.display = "block";
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        function mostrarValorStock() {
+            if (typeof oTienda !== "undefined" && oTienda) {
+                alert("💰 Valor total del stock: " + oTienda.valorTotalStock() + " €");
+            } else {
+                alert("El sistema aún no está inicializado.");
+            }
+        }
+
+        // Mostrar/ocultar campos según tipo seleccionado
+        document.addEventListener("DOMContentLoaded", () => {
+            ocultarTodosLosFormularios();
+
+            document.querySelectorAll("input[name='rbtTipo']").forEach(radio => {
+                radio.addEventListener("change", e => {
+                    const tipo = e.target.value;
+                    document.getElementById("camposTelevisor").style.display = tipo === "televisor" ? "block" : "none";
+                    document.getElementById("camposPortatil").style.display = tipo === "portatil" ? "block" : "none";
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+/* ==========================
+   ESTILOS BASE
+   ========================== */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    color: #222;
+}
+
+/* CABECERA */
+header {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.6em;
+}
+
+/* MENÚ DE NAVEGACIÓN */
+nav ul {
+    list-style: none;
+    margin: 15px 0 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+nav li a {
+    text-decoration: none;
+    background-color: #0059b3;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+nav li a:hover {
+    background-color: #007bff;
+}
+
+/* CONTENEDOR DE FORMULARIOS */
+main {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 0 10px;
+}
+
+/* FORMULARIOS */
+form {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+form h2 {
+    color: #003366;
+    border-bottom: 2px solid #0059b3;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95em;
+}
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+    margin: 8px 0;
+}
+
+/* BOTONES */
+button {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.botones {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+button:not(.cancelar) {
+    background-color: #0059b3;
+    color: white;
+}
+
+button.cancelar {
+    background-color: #ccc;
+    color: #222;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 1.3em;
+    }
+}
