@@ -1,6 +1,38 @@
 "use strict";
 
-let a = new Arbol(1, 2.3, "Pino Carrasco");
+let a1 = new Caduco(1, 123, "Pinsapo", "Febrero");
+let a2 = new Perenne(2, 200, "Manzano", true);
+let a3 = new Caduco(3, 60, "Pino Carrasco", "marzo");
+let a4 = new Perenne(4, 95, "Manzano", true);
+let a5 = new Caduco(3, 412, "Pino Carrasco", "marzo");
+let a6 = new Perenne(5, 10, "Peral", true);
+let a7 = new Perenne(6, 20, "Ciruelo", true);
+
+let vivero = new Vivero();
+vivero.altaArbol(a1);
+vivero.altaArbol(a2);
+vivero.altaArbol(a3);
+vivero.altaArbol(a4);
+vivero.altaArbol(a5);
+vivero.altaArbol(a6);
+vivero.altaArbol(a7);
+
+console.log(vivero);
+
+/*console.log(vivero.tallajeArbol(7, 34));
+
+console.log(vivero.tallajeArbol(4, 3));
+
+console.log(vivero.tallajeArbol(2, 10));
+
+console.log(vivero.tallajeArbol(3, 10));
+
+console.log(vivero);*/
+
+document.getElementById("salida").innerHTML = vivero.listadoPerennes(3);
+
+vivero.totalArbolesVenta();
+/*let a = new Arbol(1, 2.3, "Pino Carrasco");
 
 for (let value of Object.values(a)) {
   console.log(value);
@@ -8,7 +40,7 @@ for (let value of Object.values(a)) {
 
 let p = new Perenne(2, 4.5, "Manzano", true);
 console.log(p);
-console.log(p.toHTMLRow());
+console.log(p.toHTMLRow());*/
 
 /*
 // Variables globales

@@ -85,13 +85,37 @@ class Vivero {
         this._arboles = [];
     }
 
+    get arboles() {
+        return this._arboles;
+    }
+
+    set arboles(value) {
+        this._arboles = value;
+    }
+
     // Alta de árbol
     altaArbol(oArbol) {
-        if (this._arboles.find((a) => a.codigo === oArbol.codigo)) {
-        return false;
+        if (this.arboles.find((a) => a.codigo === oArbol.codigo)) {
+            return false;
         }
-        this._arboles.push(oArbol);
+        this.arboles.push(oArbol);
         return true;
+
+        // if (this.arboles.filter((a) => a.codigo === oArbol.codigo).length > 0) {
+        //     return false;
+        // }
+        // this.arboles.push(oArbol);
+        // return true;
+
+
+        
+        // sin _arboles usamos arboles usamos el getter directamente (como en python)
+
+        // if (this.arboles.includes(oArbol)) {
+        //     return false;
+        // }
+        // this.arboles.push(oArbol);
+        // return true;
     }
 
     // Tallaje de árbol
