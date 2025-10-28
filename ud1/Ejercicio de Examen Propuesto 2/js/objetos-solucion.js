@@ -164,6 +164,10 @@ class Tienda {
         return "✅ Precio actualizado correctamente.";
     }
 
+    //sobre el instanceof: “Incluye este producto p en la lista solo si es un objeto creado a partir de la clase Televisor (o hereda de ella)”.
+
+    //No seleccionará otros tipos de productos que puedan estar en this.#productos, aunque tengan propiedades similares.
+
     // Listado televisores 4K o superior
     listarTelevisores4K() {
         let lista = this.#productos.filter(
