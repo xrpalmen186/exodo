@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Agencia Dos Hermanas — Gestión</title>
+
+  <!-- Bootstrap 5 (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="bg-primary text-white py-3">
+    <div class="container">
+      <h1 class="h4 mb-0">Agencia Dos Hermanas — Gestión de Clientes, Alojamientos y Reservas</h1>
+    </div>
+  </header>
+
+  <main class="container my-4">
+    <!-- Mensajes (capa global) -->
+    <div id="message" class="alert" role="alert" style="display:none;"></div>
+
+    <!-- Menú -->
+    <nav class="mb-4">
+      <div class="btn-group" role="group" aria-label="menu">
+        <button class="btn btn-outline-primary" onclick="showForm('frmCliente')">Alta cliente</button>
+        <button class="btn btn-outline-primary" onclick="showForm('frmAlojamiento')">Alta alojamiento</button>
+        <button class="btn btn-outline-primary" onclick="showForm('frmReserva')">Nueva reserva</button>
+        <button class="btn btn-outline-secondary" onclick="showForm('frmListados')">Listados</button>
+      </div>
+    </nav>
+
+    <!-- Formularios / secciones -->
+    <section id="forms">
+
+      <!-- Alta Cliente -->
+      <form id="frmCliente" class="card p-3 mb-3 d-none">
+        <h5>Alta de cliente</h5>
+        <div class="row g-2">
+          <div class="col-md-3">
+            <label class="form-label">DNI</label>
+            <input id="cliDNI" class="form-control" type="text" placeholder="12345678A">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Nombre</label>
+            <input id="cliNombre" class="form-control" type="text" placeholder="Juan">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Apellidos</label>
+            <input id="cliApellidos" class="form-control" type="text" placeholder="Gómez Pérez">
+          </div>
+          <div class="col-12 mt-2">
+            <button type="button" class="btn btn-primary" onclick="altaCliente()">Registrar cliente</button>
+            <button type="button" class="btn btn-secondary" onclick="hideAll()">Cancelar</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Alta Alojamiento -->
+      <form id="frmAlojamiento" class="card p-3 mb-3 d-none">
+        <h5>Alta de alojamiento</h5>
+        <div class="row g-2">
+          <div class="col-md-3">
+            <label class="form-label">ID alojamiento</label>
+            <input id="aljID" class="form-control" type="text" placeholder="A001">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Capacidad (personas)</label>
+            <input id="aljCapacidad" class="form-control" type="number" min="1" value="2">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Tipo</label>
+            <select id="aljTipo" class="form-select" onchange="toggleAlojamientoCampos()">
+              <option value="habitacion">Habitación (hotel)</option>
+              <option value="apartamento">Apartamento</option>
+            </select>
+          </div>
+
+          <!-- Campos habitación -->
+          <div id="camHab" class="col-12 mt-2">
+            <div class="form-check">
+              <input id="habDesayuno" class="form-check-input" type="checkbox">
+              <label class="form-check-label">Desayuno incluido</label>
+            </div>
+          </div>
+
+          <!-- Campos apartamento -->
+          <div id="camApt" class="col-12 mt-2 d-none">
+            <div class="row g-2">
+              <div class="col-md-4">
+                <label class="form-label">Aparcamiento (sí/no)</label>
+                <select id="aptAparcamiento" class="form-select">
+                  <option value="true">Sí</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Dormitorios</label>
+                <input id="aptDorm" class="form-control" type="number" min="0" value="1">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 mt-2">
+            <button type="button" class="btn btn-primary" onclick="altaAlojamiento()">Registrar alojamiento</button>
+            <button type="button" class="btn btn-secondary" onclick="hideAll()">Cancelar</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Nueva Reserva -->
+      <form id="frmReserva" class="card p-3 mb-3 d-none">
+        <h5>Crear reserva</h5>
+        <div class="row g-2">
+          <div class="col-md-4">
+            <label class="form-label">DNI cliente</label>
+            <input id="resDNI" class="form-control" type="text" placeholder="DNI cliente">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Fecha inicio</label>
+            <input id="resInicio" class="form-control" type="date">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Fecha fin</label>
+            <input id="resFin" class="form-control" type="date">
+          </div>
+
+          <div class="col-12">
+            <label class="form-label">Alojamientos a añadir (IDs separadas por coma)</label>
+            <input id="resAlojs" class="form-control" type="text" placeholder="A001,A002">
+            <div class="form-text">Se puede añadir más de un alojamiento si están libres para las fechas indicadas.</div>
+          </div>
+
+          <div class="col-12 mt-2">
+            <button type="button" class="btn btn-primary" onclick="crearReserva()">Formalizar reserva</button>
+            <button type="button" class="btn btn-secondary" onclick="hideAll()">Cancelar</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Listados -->
+      <div id="frmListados" class="card p-3 mb-3 d-none">
+        <h5>Listados</h5>
+
+        <div class="mb-2">
+          <button class="btn btn-outline-primary me-2" onclick="listarClientes()">Listado de clientes</button>
+          <button class="btn btn-outline-primary me-2" onclick="listarAlojamientos()">Listado de alojamientos</button>
+        </div>
+
+        <hr>
+
+        <div class="row g-2">
+          <div class="col-md-6">
+            <label class="form-label">Reservas de cliente (dni)</label>
+            <input id="lstResDNI" class="form-control" type="text" placeholder="DNI cliente">
+            <div class="mt-2">
+              <button class="btn btn-outline-secondary" onclick="listarReservasCliente()">Mostrar reservas</button>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Reservas entre fechas</label>
+            <div class="d-flex gap-2">
+              <input id="lstInicio" class="form-control" type="date">
+              <input id="lstFin" class="form-control" type="date">
+            </div>
+            <div class="mt-2">
+              <button class="btn btn-outline-secondary" onclick="listarReservasEntreFechas()">Mostrar reservas entre fechas</button>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div>
+          <button class="btn btn-outline-primary" onclick="listarHabitacionesDesayuno()">Habitaciones con desayuno (ordenadas)</button>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="text-center py-3">
+    <small>Práctica — Desarrollo Web en Entorno Cliente</small>
+  </footer>
+
+  <!-- Bootstrap JS (bundle) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Ficheros JS -->
+  <script src="js/objetos.js"></script>
+  <script src="js/principal.js"></script>
+</body>
+</html>

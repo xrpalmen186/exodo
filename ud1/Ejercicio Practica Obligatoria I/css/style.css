@@ -1,0 +1,10 @@
+/* style.css: sencillo y legible para examen */
+body{font-family:Arial,Helvetica,sans-serif;background:#f7f9fc;color:#222}
+header{background:#0d6efd;color:#fff}
+header h1{margin:0;padding:12px 0;font-weight:600}
+main{max-width:980px;margin:18px auto}
+.card{background:#fff;border-radius:8px;border:1px solid #e6eefb}
+footer{color:#666}
+.alert{position:fixed;bottom:20rem;right:50%; transform:translateX(50%);z-index:1050;display:none}
+.form-text{color:#6c757d}
+.d-none{display:none!important}
