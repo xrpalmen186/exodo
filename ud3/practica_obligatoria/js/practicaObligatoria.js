@@ -1,4 +1,5 @@
-// Datos y carga inicial (has proporcionado esto; lo mantenemos)
+/* Raimundo Palma Méndez - Práctica obligatoria (UD3) 2ºDAW */
+
 const comerciales = [
   "Carmen Gómez",
   "Lucía Gil",
@@ -93,9 +94,9 @@ function cargaDatosIniciales() {
   catalogo.addProducto(16, "Salsa Barbacoa 500gr (Caja de 30)", 67.5, 2);
 }
 
-// ---------- Código de interfaz y eventos ----------
+// ---------- interfaz y eventos ----------
 
-/* Referencias DOM */
+/* referencias del DOM */
 const selComerciales = document.querySelector("select[name='comerciales']");
 const selCategorias = document.querySelector("select[name='categorias']");
 const selProductos = document.querySelector("select[name='productos']");
@@ -103,10 +104,10 @@ const panelClientes = document.getElementById("clientes");
 const panelPedido = document.getElementById("pedido");
 const teclado = document.getElementById("teclado");
 
-/* Inicialización */
+/* inicialización */
 function initApp() {
   cargaDatosIniciales();
-  // Llenar comerciales
+  // llenar comerciales
   comerciales.forEach((c, idx) => {
     const option = document.createElement("option");
     option.value = idx;
@@ -115,7 +116,7 @@ function initApp() {
   });
   selComerciales.selectedIndex = gestor.comercialActual;
 
-  // Llenar categorias
+  // llenar categorias
   gestor.categorias.forEach((cat, idx) => {
     const option = document.createElement("option");
     option.value = idx;
@@ -124,14 +125,14 @@ function initApp() {
   });
   selCategorias.selectedIndex = 0;
 
-  // Rellenar productos para la categoría inicial
+  // rellenar productos para la categoría inicial
   rellenarProductosPorCategoria(parseInt(selCategorias.value, 10));
 
-  // Render inicial de clientes y pedido
+  // render inicial de clientes y pedido
   renderClientes();
   renderPedido();
 
-  // Event listeners
+  // event listeners
   selComerciales.addEventListener("change", (e) => {
     const idx = parseInt(e.target.value, 10);
     gestor.setComercialActual(idx);
@@ -146,7 +147,7 @@ function initApp() {
     rellenarProductosPorCategoria(idCat);
   });
 
-  // Delegación para clic en clientes
+  // para cuando hace click en clientes
   panelClientes.addEventListener("click", (e) => {
     // si se hace click en un cliente (tiene data-index)
     const target = e.target.closest(".cliente");
@@ -157,7 +158,7 @@ function initApp() {
     renderPedido();
   });
 
-  // Delegación para botones + / - en la tabla del pedido
+  // delegación para botones + / - en la tabla del pedido
   panelPedido.addEventListener("click", (e) => {
     const btnInc = e.target.closest(".inc-btn");
     const btnDec = e.target.closest(".dec-btn");
@@ -192,7 +193,7 @@ function initApp() {
     }
   });
 
-  // Teclado: añadir unidades (1..9) al producto seleccionado
+  // teclado numerico, añadir unidades (1-9) al producto seleccionado
   teclado.addEventListener("click", (e) => {
     const btn = e.target.closest("input.tecla");
     if (!btn) return;
@@ -209,7 +210,7 @@ function initApp() {
     // si el producto ya existe en el pedido -> informar y no añadir
     const existente = gestor.buscarLinea(idProducto);
     if (existente) {
-      alert("Ya existe una línea para este producto en el pedido. Use los botones + / - para modificar unidades.");
+      alert("Ya existe una línea para este producto en el pedido. Usa los botones + / - para modificar unidades.");
       return;
     }
 
@@ -218,7 +219,7 @@ function initApp() {
     const res = gestor.addLineaPedido(idProducto, unidades);
     if (!res.ok) {
       if (res.reason === "existe") {
-        alert("Ya existe una línea para este producto. Use los botones de la línea para modificar unidades.");
+        alert("Ya existe una línea para este producto. Usa los botones de la línea para modificar unidades.");
       } else {
         alert("No se pudo añadir la línea de pedido.");
       }
@@ -229,7 +230,7 @@ function initApp() {
   });
 }
 
-/* Funciones UI */
+/* funciones para la interfaz */
 
 function rellenarProductosPorCategoria(idCategoria) {
   selProductos.innerHTML = "";
@@ -251,8 +252,8 @@ function rellenarProductosPorCategoria(idCategoria) {
 }
 
 function renderClientes() {
-  // el panelClientes contiene un h1 y el select; nosotros añadiremos la zona de visualización
-  // Buscaremos o crearemos un contenedor interno para las fichas
+  // el panelClientes contiene un h1 y el select
+  // buscaremos o crearemos un contenedor interno para las fichas
   let cont = panelClientes.querySelector(".contenedor-fichas");
   if (!cont) {
     cont = document.createElement("div");
@@ -287,8 +288,14 @@ function renderClientes() {
     nombre.style.wordBreak = "break-word";
     div.appendChild(nombre);
 
-    // Si el cliente tiene pedido, añadimos un pequeño resumen (nº líneas / total)
-    const pedido = gestor.pedidos[gestor.comercialActual] && gestor.pedidos[gestor.comercialActual][idx] ? gestor.pedidos[gestor.comercialActual][idx] : [];
+    // si el cliente tiene algun pedido, añadimos un pequeño resumen (nº líneas / total)
+
+    const pedido = (gestor.pedidos[gestor.comercialActual] && gestor.pedidos[gestor.comercialActual][idx]) ? gestor.pedidos[gestor.comercialActual][idx] : [];
+
+    // con esto obtengo el pedido del cliente actual, si no existe (por ejemplo: si no hay cliente actual)
+    // entonces devolvemos un array vacío. Esto es simplemente para evitar errores al intentar acceder a
+    // un array que no existe (puesto que no tendría ningún tipo de sentido).
+
     if (pedido && pedido.length > 0) {
       const resumen = document.createElement("div");
       resumen.style.fontSize = "12px";
@@ -309,7 +316,7 @@ function renderClientes() {
 }
 
 function renderPedido() {
-  panelPedido.innerHTML = ""; // limpiamos
+  panelPedido.innerHTML = "";
 
   const cliente = gestor.getClienteActual();
   const pedido = gestor.getPedidoActual();
@@ -341,7 +348,7 @@ function renderPedido() {
     `;
     table.appendChild(thead);
     const tbody = document.createElement("tbody");
-
+    
     pedido.forEach((linea) => {
       const prod = catalogo.getProductoById(linea.idProducto);
       const tr = document.createElement("tr");
@@ -355,7 +362,7 @@ function renderPedido() {
       tdImporte.textContent = prod ? (linea.unidades * prod.precioUnidad).toFixed(2) + " €" : "-";
       const tdAcc = document.createElement("td");
 
-      // Botones + y -
+      // botones + y -
       const btnInc = document.createElement("button");
       btnInc.className = "inc-btn boton";
       btnInc.textContent = "+";
@@ -380,14 +387,14 @@ function renderPedido() {
     table.appendChild(tbody);
     panelPedido.appendChild(table);
 
-    // Total
+    // total del pedido
     const total = gestor.totalPedidoActual();
     const totalDiv = document.createElement("div");
     totalDiv.style.marginTop = "10px";
     totalDiv.innerHTML = `<strong>Total pedido:</strong> ${total.toFixed(2)} €`;
     panelPedido.appendChild(totalDiv);
 
-    // Botón finalizar pedido
+    // boton finalizar pedido
     const btnFinal = document.createElement("button");
     btnFinal.id = "btnFinalizarPedido";
     btnFinal.className = "boton";
@@ -398,7 +405,7 @@ function renderPedido() {
   }
 }
 
-/* Arrancar aplicación cuando DOM esté listo */
+/* iniciar aplicación cuando el DOM esté listo */
 document.addEventListener("DOMContentLoaded", () => {
   initApp();
 });

@@ -1,5 +1,3 @@
-// Definición de clases para la práctica
-
 class Producto {
     constructor(idProducto, nombreProducto, precioUnidad, idCategoria) {
         this.idProducto = idProducto;
@@ -30,24 +28,24 @@ class Catalogo {
 
 class LineaPedido {
     constructor(unidades, idProducto) {
-        this.unidades = unidades; // entero
-        this.idProducto = idProducto; // entero referenciando producto
+        this.unidades = unidades;
+        this.idProducto = idProducto;
     }
 }
 
 class Cliente {
     constructor(nombre) {
         this.nombre = nombre;
-        this.cuentaAbierta = false; // booleano
+        this.cuentaAbierta = false;
     }
 }
 
 class Gestor {
     constructor() {
-        // Se asume que las variables globales comerciales, clientes y categorias existen
+        // asumiendo que las variables globales comerciales, clientes y categorias existen
         this.categorias = typeof categorias !== "undefined" ? categorias : [];
         this.comerciales = typeof comerciales !== "undefined" ? comerciales : [];
-        // clientes es una matriz de nombres; aquí convertimos a objetos Cliente
+        // clientes es una matriz de nombres, aquí convertimos a objetos Cliente
         this.clientes = [];
         if (typeof clientes !== "undefined") {
             for (let i = 0; i < clientes.length; i++) {
@@ -61,7 +59,7 @@ class Gestor {
         this.comercialActual = 0;
         this.clienteActual = 0;
 
-        // pedidos: 3 dimensiones [comercial][cliente] -> array de LineaPedido
+        // pedidos: 3 dimensiones [comercial][cliente] (array de LineaPedido)
         this.pedidos = [];
         for (let i = 0; i < this.comerciales.length; i++) {
             this.pedidos[i] = [];
@@ -110,7 +108,7 @@ class Gestor {
         unidades = Math.max(1, Math.min(9, Math.floor(unidades)));
         const pedido = this.getPedidoActual();
 
-        // si ya existe línea -> no permitir añadir; sugerir usar modificar unidades
+        // si ya existe línea (no permitir añadir)
         if (pedido.some((l) => l.idProducto === idProducto)) {
             return { ok: false, reason: "existe" };
         }
@@ -140,7 +138,7 @@ class Gestor {
         if (pedido[idx].unidades > 0) {
             return { ok: true, eliminado: false };
         } else {
-            // unidades <= 0 -> quitar la línea
+            // unidades <= 0 (quitar la línea)
             pedido.splice(idx, 1);
             // si ya no hay líneas, cerrar cuenta
             if (pedido.length === 0) {
