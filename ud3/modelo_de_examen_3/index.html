@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Examen Final - Hotel JS</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h1>Hotel Manager System</h1>
+    
+    <div id="panel-habitaciones" class="panel">
+        <h2>Habitaciones</h2>
+        <input type="text" id="filtro-habitacion" placeholder="Filtrar por código (Regex)...">
+        <div id="grid-habitaciones"></div>
+    </div>
+
+    <div id="panel-recepcion" class="panel">
+        <h2>Recepción / Check-In</h2>
+        <div id="formulario-checkin" style="display:none;">
+            <h3 id="titulo-form">Habitación Seleccionada</h3>
+            <form>
+                <label>Nombre Huésped:</label>
+                <input type="text" id="input-nombre"><br><br>
+
+                <label>Pasaporte (3 Letras + 6 Núms):</label>
+                <input type="text" id="input-pasaporte" placeholder="ESP123456">
+                <span id="msg-pasaporte" class="error">Formato inválido</span><br><br>
+
+                <label>Tarjeta (0000-0000-0000-0000):</label>
+                <input type="text" id="input-tarjeta" placeholder="1234-5678-9012-3456">
+                <span id="msg-tarjeta" class="error">Formato inválido</span><br><br>
+
+                <label>Noches:</label>
+                <input type="number" id="input-noches" min="1" value="1"><br><br>
+
+                <button type="button" id="btn-checkin" class="boton">Realizar Check-In</button>
+            </form>
+        </div>
+        <div id="mensaje-recepcion">
+            <p>Selecciona una habitación LIBRE para hacer Check-In.</p>
+        </div>
+    </div>
+
+    <div id="panel-detalles" class="panel">
+        <h2>Detalle / Factura</h2>
+        <div id="info-habitacion"></div>
+        <button id="btn-checkout" class="boton-rojo" style="display:none;">Check-Out (Facturar)</button>
+        <button id="btn-limpieza" class="boton-naranja" style="display:none;">Terminar Limpieza</button>
+    </div>
+
+    <script src="clases.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

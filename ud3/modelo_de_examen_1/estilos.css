@@ -1,0 +1,15 @@
+body { font-family: sans-serif; }
+.panel { border: 2px solid #333; width: 30%; height: 600px; margin: 1%; float: left; text-align: center; overflow-y: auto; }
+.ficha-alumno {
+    width: 100px; height: 100px; margin: 10px; display: inline-flex;
+    align-items: center; justify-content: center; color: white;
+    cursor: pointer; font-weight: bold; border-radius: 5px;
+    flex-direction: column; font-size: 0.9em;
+}
+.aprobado { background-color: green; }
+.suspenso { background-color: firebrick; }
+.seleccionado { border: 4px solid black; }
+.tecla { width: 60px; height: 60px; font-size: 20px; margin: 2px; cursor: pointer; }
+table { width: 90%; margin: auto; border-collapse: collapse; }
+td, th { border: 1px solid #ccc; padding: 5px; }
+#buscador { padding: 5px; width: 80%; margin-bottom: 10px; }

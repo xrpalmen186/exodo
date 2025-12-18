@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Examen Simulacro - IES JS</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h1>Gestor de Evaluaciones IES</h1>
+    
+    <div id="panel-alumnos" class="panel">
+        <h2>Listado de Clase</h2>
+        <form>
+            <label>Tutor/Curso:</label>
+            <select id="select-cursos"></select>
+        </form>
+        <br>
+        <input type="text" id="buscador" placeholder="Filtrar por nombre (Regex)...">
+        
+        <div id="contenedor-fichas"></div>
+    </div>
+
+    <div id="panel-controles" class="panel">
+        <h2>Evaluar</h2>
+        <form>
+            <label>Departamento:</label>
+            <select id="select-dept"></select><br><br>
+            <label>Asignatura:</label>
+            <select id="select-asignatura"></select>
+        </form>
+        <br>
+        <h4>Nota:</h4>
+        <div id="teclado">
+            <button class="tecla">1</button><button class="tecla">2</button><button class="tecla">3</button><br>
+            <button class="tecla">4</button><button class="tecla">5</button><button class="tecla">6</button><br>
+            <button class="tecla">7</button><button class="tecla">8</button><button class="tecla">9</button><br>
+            <button class="tecla">0</button>
+        </div>
+    </div>
+
+    <div id="panel-boletin" class="panel">
+        </div>
+
+    <script src="datos.js"></script>
+    <script src="clases.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

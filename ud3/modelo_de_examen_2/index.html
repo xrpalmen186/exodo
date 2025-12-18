@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Examen Regex - FitManager</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h1>FitManager - Control de Acceso</h1>
+    
+    <div id="panel-listado" class="panel">
+        <h2>Socios Activos</h2>
+        <input type="text" id="buscador" placeholder="Buscar por nombre...">
+        <div id="contenedor-socios"></div>
+    </div>
+
+    <div id="panel-registro" class="panel">
+        <h2>Nuevo Registro</h2>
+        <form id="form-registro">
+            <label>Nombre Completo:</label>
+            <input type="text" id="reg-nombre" placeholder="Ej: Ana Pérez"><br><br>
+
+            <label>DNI (8 núm + Letra):</label>
+            <input type="text" id="reg-dni" placeholder="12345678A"><br>
+            <span id="error-dni" class="mensaje-error">Formato incorrecto</span><br>
+
+            <label>Email de contacto:</label>
+            <input type="text" id="reg-email" placeholder="usuario@mail.com"><br>
+            <span id="error-email" class="mensaje-error">Email no válido</span><br><br>
+
+            <button type="button" id="btn-alta" class="boton">Dar de Alta</button>
+        </form>
+    </div>
+
+    <div id="panel-ficha" class="panel">
+        <h2>Ficha de Socio</h2>
+        <div id="datos-socio">
+            <p>Selecciona un socio de la lista.</p>
+        </div>
+    </div>
+
+    <script src="clases.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
