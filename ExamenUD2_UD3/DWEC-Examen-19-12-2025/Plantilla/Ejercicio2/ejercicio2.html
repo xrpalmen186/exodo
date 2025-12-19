@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejercicio 2 - Reponedor</title>
+    <link href="./css/ejercicio2.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="header">
+      <h3>Examen DWEC - Ejercicio 2</h3>
+    </div>
+
+    <div id="wrapper">
+      <div id="origen" class="contenedor">
+        <h2>PALÉ DE CARGA (Origen)</h2>
+        <div class="item-producto">
+          <input type="checkbox" class="check-prod" />
+          <span>🍎 Manzanas</span>
+        </div>
+        <div class="item-producto">
+          <input type="checkbox" class="check-prod" />
+          <span>🥛 Leche</span>
+        </div>
+        <div class="item-producto">
+          <input type="checkbox" class="check-prod" />
+          <span>🍞 Pan</span>
+        </div>
+        <div class="item-producto">
+          <input type="checkbox" class="check-prod" />
+          <span>🧃 Zumo</span>
+        </div>
+      </div>
+
+      <div class="contenedor">
+        <h2>TIENDA (Destino)</h2>
+        <div id="zona-destino">
+          <div id="estanteriaA" class="zona-objetivo">
+            <label
+              ><input type="radio" name="destino" value="estanteriaA" />
+              Estantería A (Fríos)</label
+            >
+            <div class="contenido-estante"></div>
+          </div>
+
+          <div id="estanteriaB" class="zona-objetivo">
+            <label
+              ><input type="radio" name="destino" value="estanteriaB" />
+              Estantería B (Secos)</label
+            >
+            <div class="contenido-estante"></div>
+          </div>
+
+          <div id="estanteriaC" class="zona-objetivo">
+            <label
+              ><input type="radio" name="destino" value="estanteriaC" />
+              Estantería C (Varios)</label
+            >
+            <div class="contenido-estante"></div>
+          </div>
+
+          <hr />
+
+          <div class="panel-control">
+            <div class="bloque-opcion">
+              <strong>MÉTODO DE COLOCACIÓN:</strong><br />
+              <label
+                ><input type="radio" name="metodo" value="append" checked />
+                Append (Dentro, final)</label
+              ><br />
+              <label
+                ><input type="radio" name="metodo" value="prepend" /> Prepend
+                (Dentro, inicio)</label
+              ><br />
+              <label
+                ><input type="radio" name="metodo" value="before" /> Before
+                (Fuera, antes)</label
+              ><br />
+              <label
+                ><input type="radio" name="metodo" value="after" /> After
+                (Fuera, después)</label
+              >
+            </div>
+
+            <div class="bloque-opcion">
+              <strong>¿MANTENER COPIA EN PALÉ? (Clonar)</strong><br />
+              <label
+                ><input type="radio" name="clonar" value="no" checked /> No
+                (Mover)</label
+              >
+              <label
+                ><input type="radio" name="clonar" value="si" /> Sí
+                (Copiar)</label
+              >
+            </div>
+
+            <button id="btnMover">MOVER STOCK</button>
+            <button id="btnRestaurar">REINICIAR ALMACÉN</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/ejercicio2.js"></script>
+  </body>
+</html>

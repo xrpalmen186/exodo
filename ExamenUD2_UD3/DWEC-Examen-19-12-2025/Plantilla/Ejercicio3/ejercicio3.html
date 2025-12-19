@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejercicio 3 - Inventario</title>
+    <link href="./css/ejercicio3.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h3>Examen DWEC - Ejercicio 3</h3>
+
+    <form action="./formularioProcesado.html" name="formularioStock">
+      <label>Fabricante: </label>
+      <input type="text" name="fabricante" placeholder="Ej: Sony" /><br />
+
+      <label>Producto: </label>
+      <input type="text" name="producto" placeholder="Ej: Walkman" /><br />
+
+      <label>Fecha Entrada: </label>
+      <input type="text" name="fecha" placeholder="AAAA-MM-DD" /><br />
+
+      <label>Categoría: </label>
+      <select name="categoria">
+        <option value="electronica">Electrónica</option>
+        <option value="hogar">Hogar</option>
+        <option value="alimentacion">Alimentación</option></select
+      ><br />
+
+      <label>Cód. Referencia: </label>
+      <input type="text" name="referencia" /><br />
+
+      <label>Ubicación Pasillo: </label>
+      <input type="text" name="ubicacion" placeholder="Ej: A-01" /><br />
+
+      <input type="submit" value="Dar de Alta" />
+    </form>
+
+    <div id="mensajes"></div>
+
+    <script src="./js/ejercicio3.js"></script>
+  </body>
+</html>

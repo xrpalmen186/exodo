@@ -1,0 +1,133 @@
+/* Reseteo básico: box-sizing es vital para que padding no aumente el ancho */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* Volvemos al ancho limitado y centrado */
+  max-width: 1024px;
+  margin: 20px auto;
+  padding: 0 10px; /* Un poco de margen lateral para que no toque bordes en pantallas pequeñas */
+  background-color: #f4f4f4;
+}
+
+.header {
+  background: #333;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* --- AQUÍ ESTÁ EL CAMBIO CLAVE DE MAQUETACIÓN --- */
+#wrapper {
+  display: flex; /* Activa el modo flexible */
+  justify-content: space-between; /* Pega uno a la izq y otro a la der */
+  gap: 20px; /* Espacio hueco entre las dos columnas */
+  align-items: flex-start; /* Alinea al inicio verticalmente */
+}
+
+.contenedor {
+  /* Ya no usamos porcentajes + inline-block que suelen fallar */
+  flex: 1; /* Ambos ocupan el mismo espacio disponible */
+  background: #f9f9f9;
+  padding: 20px;
+  border: 2px solid #333; /* Borde sólido para delimitar bien */
+  border-radius: 5px;
+  min-height: 450px; /* Altura mínima para que se vean iguales */
+}
+/* ------------------------------------------------ */
+
+.item-producto {
+  background: white;
+  border: 1px solid #999;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.item-producto:hover {
+  background-color: #eef;
+}
+
+.item-producto span {
+  margin-left: 10px;
+}
+
+/* Estilos para las estanterías (Destino) */
+.zona-objetivo {
+  border: 2px dashed crimson; /* Borde discontinuo rojo */
+  background-color: #ffe6e6;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.zona-objetivo label {
+  color: crimson;
+  font-weight: bold;
+  display: block;
+  border-bottom: 1px solid rgba(220, 20, 60, 0.3);
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+/* Panel de control inferior */
+.panel-control {
+  background: #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+}
+
+.bloque-opcion {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #bbb;
+}
+
+.bloque-opcion:last-child {
+  border-bottom: none;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+#btnMover {
+  background: #28a745;
+  color: white;
+}
+#btnMover:hover {
+  background: #218838;
+}
+
+#btnRestaurar {
+  background: #dc3545;
+  color: white;
+}
+#btnRestaurar:hover {
+  background: #c82333;
+}
+
+/* Responsive: Si la pantalla es muy pequeña (móvil), ponemos uno debajo de otro */
+@media (max-width: 700px) {
+  #wrapper {
+    flex-direction: column;
+  }
+}
