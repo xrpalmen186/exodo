@@ -8,6 +8,7 @@ function recorrerArbol(oNodo) {
   }
 }
 
+
 function procesarNodo(oNodo) {
   let oResultado = document.querySelector("#resultado");
 
